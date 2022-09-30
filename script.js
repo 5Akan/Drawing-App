@@ -14,7 +14,7 @@ function drawCircle(x, y) {
     /*
     ctx.arc(x,y,radius,startradius,endradius,clockwise)
     */
-   ctx.stroke();//This method is used to actually draw the arc
+   ctx.fill();//This method is used to actually draw the arc
 }
 
 
