@@ -1,4 +1,6 @@
 const canvas = document.getElementById('canvas');
+const incrBtn = document.getElementById('increase');
+const decrBtn = document.getElementById('decrease');
 
 const ctx = canvas.getContext('2d'); 
 /*Gets the context , the context is
@@ -31,8 +33,16 @@ canvas.addEventListener('mousemove', (e)=>{
     }
 });
 
+incrBtn.addEventListener('click', ()=>{
+    size +=5;
+});
+
+decrBtn.addEventListener('click', ()=>{
+    size -=5;
+});
+
 function drawCircle(x, y) {
-    ctx.beginPath();
+    ctx.beginPath();  
 
     /*
     ctx.arc(x,y,radius,startradius,endradius,clockwise)
