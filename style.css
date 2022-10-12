@@ -17,21 +17,28 @@ body{
 }
 
 canvas{
-    border:1px solid #111 ;
+    border:1px solid rebeccapurple ;
 }
 
 .toolbox{
     background: rebeccapurple;
+    border:1px solid rebeccapurple;
+    display: flex;
     width: 502px;
     padding: 0.5rem;
 }
 
-.toolbox button{
+.toolbox > *{ /* "> *"  means all elements under toolbox*/
     background-color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     border: none;
     font-size: 1rem;
     font-weight: bold;
+    margin: 0.15rem;
     padding: 0.35rem;
     width: 30px;
+    height: 30px;
 }
 

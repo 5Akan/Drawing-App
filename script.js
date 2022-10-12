@@ -2,6 +2,7 @@ const canvas = document.getElementById('canvas');
 const incrBtn = document.getElementById('increase');
 const decrBtn = document.getElementById('decrease');
 const sizeEL = document.getElementById('size');
+const colorEl = document.getElementById('color');
 
 const ctx = canvas.getContext('2d'); 
 /*Gets the context , the context is
@@ -9,6 +10,7 @@ const ctx = canvas.getContext('2d');
 
 let size = 10;
 let isPressed = false;
+let color = 'black';
 
 canvas.addEventListener('mousedown', (e)=>{
     isPressed = true;
@@ -54,37 +56,25 @@ decrBtn.addEventListener('click', ()=>{
     sizeUpdateOnScreen();
 });
 
+colorEl.addEventListener('change', (e)=>{
+    color = e.target.value;
+});
+
 function drawCircle(x, y) {
     ctx.beginPath();  
-
-    /*
+     /*
     ctx.arc(x,y,radius,startradius,endradius,clockwise)
     */
     ctx.arc(x, y, size, 0, Math.PI * 2);//Creates an arc
+
+    ctx.fillStyle = color;//For colours
     
    ctx.fill();//This method is used to actually draw(stroke) or fill(fill) the arc
 }
 
-// function draw(params) {
-//     /*Method to clear out a specified rectangular 
-//     size on the canvas*/
-//     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-//     drawCircle(x ,y);
-
-//     /*Tells the browser that you wish to perform an
-//     animation and requests the browser to call out the 
-//     specified function to update an animation anytime the
-//     broswer repaints
-//     */
-//     requestAnimationFrame(draw);
-// }
-
-// draw();
-
-//When i increase the btns it will show on the span
 function sizeUpdateOnScreen(params) {
       sizeEL.innerText = size;
     
 }
+
 
