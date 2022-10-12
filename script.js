@@ -1,6 +1,7 @@
 const canvas = document.getElementById('canvas');
 const incrBtn = document.getElementById('increase');
 const decrBtn = document.getElementById('decrease');
+const sizeEL = document.getElementById('size');
 
 const ctx = canvas.getContext('2d'); 
 /*Gets the context , the context is
@@ -35,10 +36,22 @@ canvas.addEventListener('mousemove', (e)=>{
 
 incrBtn.addEventListener('click', ()=>{
     size +=5;
+
+    if (size > 50) {
+        size = 50;
+    }
+
+    sizeUpdateOnScreen();
 });
 
 decrBtn.addEventListener('click', ()=>{
     size -=5;
+
+    if (size < 5) {
+        size = 5;
+    }
+
+    sizeUpdateOnScreen();
 });
 
 function drawCircle(x, y) {
@@ -51,8 +64,6 @@ function drawCircle(x, y) {
     
    ctx.fill();//This method is used to actually draw(stroke) or fill(fill) the arc
 }
-
-
 
 // function draw(params) {
 //     /*Method to clear out a specified rectangular 
@@ -70,3 +81,10 @@ function drawCircle(x, y) {
 // }
 
 // draw();
+
+//When i increase the btns it will show on the span
+function sizeUpdateOnScreen(params) {
+      sizeEL.innerText = size;
+    
+}
+
