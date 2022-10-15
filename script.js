@@ -3,6 +3,7 @@ const incrBtn = document.getElementById('increase');
 const decrBtn = document.getElementById('decrease');
 const sizeEL = document.getElementById('size');
 const colorEl = document.getElementById('color');
+const clearEl = document.getElementById('clear');
 
 const ctx = canvas.getContext('2d'); 
 /*Gets the context , the context is
@@ -34,6 +35,10 @@ decrBtn.addEventListener('click', ()=>{
     sizeUpdateOnScreen();
 });
 
+clearEl.addEventListener('click', ()=>{
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+})
+
 canvas.addEventListener('mousedown', (e)=>{
     isPressed = true;
 
@@ -60,15 +65,23 @@ canvas.addEventListener('mousemove', (e)=>{
     const y2 = e.offsetY;// Above applies for offsetY
     /*Together both offsetX and offsetY return an exact
      point when the mouse is clicked */
-
+    drawCircle(x2, y2)
     drawLine(x, y, x2, y2);
-    x = x2;//Because the destination point(x) is anywhere our mouse pointer stops
+
+    /* x and y become the new x2 and y2(new e.offsetX 
+    and e.offsetY)i.e where the mouse pointer stops after
+    the drawLine function is executed is the new x2 and y2
+    so we assign them to the destination points, x and y */
+    
+    x = x2;
     y = y2;
+    /* NB It continuously assigns the x2 and y2 to x and y
+     thus drawing the line*/
+
 
     }
 });
 
-// drawLine(300, 300, 500, 500);
 
 colorEl.addEventListener('change', (e)=>{
     color = e.target.value;
@@ -93,6 +106,7 @@ function drawLine(x1, y1, x2, y2) {
     
     //Creates another point and draws a line from that point to the destination point
     ctx.lineTo(x2, y2);
+    ctx.lineWidth = size *2;
     ctx.strokeStyle = color;
     ctx.stroke();
     
