@@ -42,3 +42,7 @@ canvas{
     height: 30px;
 }
 
+.toolbox > *:last-child{
+    margin-left: auto;
+}
+
